@@ -58,7 +58,7 @@ bench/
 ├── download_datasets.py
 ├── download_model.py
 ├── eval.py
-├── start_eval.sh
+└── start_eval.sh
 ```
 
 
