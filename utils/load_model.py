@@ -1,5 +1,6 @@
 from typing import Dict, Any
 import os
+import re
 import torch
 from colorama import Fore, init
 from transformers import (
@@ -32,27 +33,36 @@ def get_model_type(model_name: str) -> str:
         else:
             return "sa2va"
     
-    elif "polyu-chenlab/unipixel" in model_name_lower or "unipixel" in model_name_lower:
+    elif "unipixel" in model_name_lower:
         return "unipixel"
     
-    elif "opengvlab/internvl3_5" in model_name_lower or "opengvlab/internvl3.5" in model_name_lower:
+    elif re.search(r"opengvlab/internvl3[._]5", model_name_lower):
         return "internvl3_5"
+    
     elif "opengvlab/internvl3" in model_name_lower:
         return "internvl3"
-    elif "qwen/qwen3-vl-235b" in model_name_lower:
+    
+    elif re.search(r"qwen/qwen3-vl-\d+b-a\d+b", model_name_lower):
         return "qwen3_vl_moe"
+    
     elif "qwen/qwen3-vl" in model_name_lower:
         return "qwen3_vl"
+    
     elif "qwen/qwen2.5-vl" in model_name_lower:
         return "qwen2_5_vl"
-    elif "llava-onevision" in model_name_lower:
+    
+    elif "llava-onevision" in model_name_lower or "llava-one-vision" in model_name_lower:
         return "llava_onevision"
-    elif "vst-7b" in model_name_lower:
+    
+    elif re.search(r"vst-\d+b", model_name_lower):
         return "vst"
+    
     elif "spatial-ssrl" in model_name_lower:
         return "spatial_ssrl"
+    
     elif "spatialladder" in model_name_lower:
         return "spatial_ladder"
+    
     elif "spacer-sft" in model_name_lower:
         return "spacer_sft"
     else:
@@ -243,3 +253,4 @@ def load_model(config: Dict) -> Dict[str, Any]:
         'device': device,
         'supports_mask': supports_mask
     }
+
