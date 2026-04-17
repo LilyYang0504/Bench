@@ -83,7 +83,7 @@ pip install -r requirements.txt
 **2. Clone Repository**
 
 ```bash
-git clone https://github.com/LilyYang0504/bench.git
+git clone https://github.com/LilyYang0504/dyn-bench.git
 cd bench
 ```
 
@@ -146,7 +146,7 @@ bash start_eval.sh
 UniPixel requires additional dependencies. See [UniPixel GitHub](https://github.com/PolyU-ChenLab/UniPixel):
 
 ```bash
-cd bench
+cd dyn-bench
 mkdir thirdparty
 cd thirdparty
 git clone https://github.com/PolyU-ChenLab/UniPixel.git
